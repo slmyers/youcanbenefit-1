@@ -23,7 +23,7 @@ export class QueryDisplayComponent implements OnChanges, OnInit {
         if (changes && changes.selected !== undefined && changes.selected.currentValue !== undefined) {
             this.styleClass.selected = changes.selected.currentValue.data.id === this.query.id;
         }
-        this.query.conditions.sort( (a, b) => a.key.name.localeCompare(b.key.name) );
+        this.query.conditions.sort( (a, b) => a.question.text.localeCompare(b.question.text) );
     }
 
     ngOnInit() {

@@ -16,11 +16,14 @@ export class QueryDryRunService {
  
 
     public buildQuery: (value: any) => {[key: string]: any} = (value) => {
-        function pluckKey({ key }){
-            return key;
+        console.log(".....")
+        console.log("value", value)
+        console.log(".....")
+        function pluckQuestion({ question }){
+            return question;
         }
         function getKeyValue(condition){
-            switch(condition.key.type) {
+            switch(condition.question.type) {
                 case "integer": {
                     return 0
                 }
@@ -34,21 +37,21 @@ export class QueryDryRunService {
                 }
 
                 default: {
-                    console.log(condition.key.type)
+                    console.log(condition.question.type)
                     return 0;
                 }
             }
         }
         function buildGroup(group, condition){
             if (condition && Object.keys(condition).length) {
-                const key = condition.key
+                const id = condition.question.id
                 const control = new FormControl(getKeyValue(condition))
-                group[key.name] = control
+                group[id] = control
             }
             return group
         }
-        const keys = value.conditions.map(pluckKey)
+        const questions = value.conditions.map(pluckQuestion)
         const query = this.fb.group(value.conditions.reduce(buildGroup, {}))
-        return { keys, query }
+        return { questions, query }
     }
 }

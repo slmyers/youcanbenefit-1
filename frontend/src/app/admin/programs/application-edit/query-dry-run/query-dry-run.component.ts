@@ -14,7 +14,7 @@ export class QueryDryRunComponent implements  OnChanges {
     private inputQueryChanges: Subscription = null;
     private dryRunValuesChange: Subscription = null;
     private recordedValues: any = null;
-    public keys: any[];
+    public questions: any[];
     public query: FormGroup;
     public data: any[];
     public programs = [];
@@ -33,11 +33,14 @@ export class QueryDryRunComponent implements  OnChanges {
         this.assignValues(buildQuery(value));
     }
 
-    private assignValues = (object) => {
+    private assignValues = object => {
+        console.log("______________")
+        console.log("object", object)
+
         if (this.dryRunValuesChange !== null) {
             this.inputQueryChanges.unsubscribe()
         }
-        this.keys = object.keys.sort((a, b) => a.name.localeCompare(b.name));
+        this.questions = object.questions.sort((a, b) => a.text.localeCompare(b.text));
         this.query = object.query;
         this.dryRunValuesChange = this.query.valueChanges.subscribe(values => {
             this.recordedValues = {...values}
