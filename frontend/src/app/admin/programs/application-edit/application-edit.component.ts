@@ -103,7 +103,6 @@ export class ApplicationEditComponent implements OnInit {
     );
   }
 
-
   handleCopy(query_id: string) {
     this.program.pipe(take(1))
       .subscribe( program => {

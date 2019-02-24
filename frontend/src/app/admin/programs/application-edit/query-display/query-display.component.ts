@@ -28,7 +28,7 @@ export class QueryDisplayComponent implements OnChanges, OnInit {
 
     ngOnInit() {
         try{
-            this.query.conditions.sort( (a, b) => a.key.name.localeCompare(b.key.name) );
+            this.query.conditions.sort( (a, b) => a.question.text.localeCompare(b.question.text) );
         } catch(e) {
             console.log("~~~~~~~~~~~~~");
             console.log("BAD QUERY", this.query);

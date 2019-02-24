@@ -1,0 +1,12 @@
+{
+    "scripts": {
+        "bootstrap": "npm run bootstrap:backend && npm run bootstrap:frontend",
+        "bootstrap:backend": "cd backend && npm ci",
+        "bootstrap:frontend": "cd frontend&& npm ci",
+        "start": "npm run start:frontend & npm run start:backend",
+        "start:frontend": "cd frontend && npm start",
+        "start:backend": "cd backend && npm run start:watch",
+        "start:elasticsearch": "systemctl start elasticsearch.service",
+        "kill:node": "pkill node"
+    }
+}
